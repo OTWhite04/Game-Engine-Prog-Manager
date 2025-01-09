@@ -24,7 +24,7 @@ public class InputManagerScript : MonoBehaviour, InputController.IGameplayAction
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        Debug.Log("Test");
+        
         if(context.performed)
         {
             Debug.Log("Jump Button was pressed!");
