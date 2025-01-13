@@ -30,6 +30,19 @@ public class InputManagerScript : MonoBehaviour, InputController.IGameplayAction
             Debug.Log("Jump Button was pressed!");
             JumpEvent?.Invoke();
         }
+        else if(context.started)
+        {
+            Debug.Log("The Jump has started!");
+            JumpEvent?.Invoke();
+        }
+        else if(context.canceled)
+        {
+            Debug.Log("Canceled Jump!");
+            JumpEvent?.Invoke();
+        }
+    
+    
+    
     }
 
     private void OnEnable()
