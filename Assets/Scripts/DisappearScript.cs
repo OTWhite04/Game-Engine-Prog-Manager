@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class DisappearScript : MonoBehaviour
 {
-    public GameObject Disappear;
+    public Light Spotlight;
    
 
     void Update()
     {
+        //Key Code for the F key.
         if(Input.GetKeyDown(KeyCode.F))
         {
-            Actions.Disappear?.Invoke();
+            //Signal that other scripts pick up.
+            Actions.Spotlight?.Invoke();
         }
     }
 }

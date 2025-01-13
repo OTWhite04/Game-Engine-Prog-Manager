@@ -41,8 +41,6 @@ public class InputManagerScript : MonoBehaviour, InputController.IGameplayAction
             JumpEvent?.Invoke();
         }
     
-    
-    
     }
 
     private void OnEnable()
