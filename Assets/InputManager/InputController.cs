@@ -35,6 +35,24 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SoundCube"",
+                    ""type"": ""Button"",
+                    ""id"": ""6e324455-52ef-4d1b-bb00-15f3367c66e2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Light"",
+                    ""type"": ""Button"",
+                    ""id"": ""162daf88-bfc7-4ca0-8305-1e8dbef18576"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -59,6 +77,28 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""153b8f09-dac7-4cba-a9c1-edf55aceae21"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SoundCube"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""074a043f-df1f-48b4-a3f0-0aa9e173965f"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Light"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -68,6 +108,8 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
+        m_Gameplay_SoundCube = m_Gameplay.FindAction("SoundCube", throwIfNotFound: true);
+        m_Gameplay_Light = m_Gameplay.FindAction("Light", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -130,11 +172,15 @@ public partial class @InputController: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Gameplay;
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
     private readonly InputAction m_Gameplay_Jump;
+    private readonly InputAction m_Gameplay_SoundCube;
+    private readonly InputAction m_Gameplay_Light;
     public struct GameplayActions
     {
         private @InputController m_Wrapper;
         public GameplayActions(@InputController wrapper) { m_Wrapper = wrapper; }
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
+        public InputAction @SoundCube => m_Wrapper.m_Gameplay_SoundCube;
+        public InputAction @Light => m_Wrapper.m_Gameplay_Light;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -147,6 +193,12 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @SoundCube.started += instance.OnSoundCube;
+            @SoundCube.performed += instance.OnSoundCube;
+            @SoundCube.canceled += instance.OnSoundCube;
+            @Light.started += instance.OnLight;
+            @Light.performed += instance.OnLight;
+            @Light.canceled += instance.OnLight;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -154,6 +206,12 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @SoundCube.started -= instance.OnSoundCube;
+            @SoundCube.performed -= instance.OnSoundCube;
+            @SoundCube.canceled -= instance.OnSoundCube;
+            @Light.started -= instance.OnLight;
+            @Light.performed -= instance.OnLight;
+            @Light.canceled -= instance.OnLight;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -174,5 +232,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
     public interface IGameplayActions
     {
         void OnJump(InputAction.CallbackContext context);
+        void OnSoundCube(InputAction.CallbackContext context);
+        void OnLight(InputAction.CallbackContext context);
     }
 }

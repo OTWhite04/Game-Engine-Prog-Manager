@@ -226,10 +226,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 412874225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4c05783b309fe54dbe16da4377a7311, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c5f7508220de7b4bacd6550052b536f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  light: {fileID: 412874226}
+  light: {fileID: 412874225}
+  audiosource: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,7 +427,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1144298769}
   - component: {fileID: 1144298770}
-  - component: {fileID: 1144298771}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -461,19 +461,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5f7508220de7b4bacd6550052b536f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1144298771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144298767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3301b71e21a24464ab144b9fb4591c66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Spotlight: {fileID: 412874226}
+  light: {fileID: 0}
+  audiosource: {fileID: 0}
 --- !u!1 &1726241177
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,9 +843,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2131375043}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0a6019582cc03b4f944ed1a34784767, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c5f7508220de7b4bacd6550052b536f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  light: {fileID: 0}
   audiosource: {fileID: 2131375044}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

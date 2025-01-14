@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 public class InputManagerScript : MonoBehaviour, InputController.IGameplayActions
 {
     public InputController gameInput;
-    
+    public GameObject light;
+    public AudioSource audiosource;
    
     void Start()
     {
@@ -19,9 +20,11 @@ public class InputManagerScript : MonoBehaviour, InputController.IGameplayAction
     #region Public Actions
     
     private Action JumpEvent;
+    private Action SoundCubeEvent;
+    private Action LightEvent;
 
     #endregion
-
+    //Mehtod for the jump with the spacebar.
     public void OnJump(InputAction.CallbackContext context)
     {
         
@@ -42,7 +45,45 @@ public class InputManagerScript : MonoBehaviour, InputController.IGameplayAction
         }
     
     }
+    //Method that plays a beep sound on the cube.
+    public void OnSoundCube(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            Debug.Log("Sound has Started!");
+            SoundCubeEvent?.Invoke();
+        }
 
+        if(context.performed)
+        {
+            Debug.Log("Cube starts and plays a noise!");
+            SoundCubeEvent?.Invoke();
+        }
+    
+    
+    
+    
+    }
+    //Method for the light event, writes to the console that it turns off and remains turned off.
+    public void OnLight(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            Debug.Log("Light has turned off!");
+            LightEvent?.Invoke();
+        }
+        else if(context.performed)
+        {
+            Debug.Log("Light remains turned off!");
+            LightEvent.Invoke();
+        }
+    }
+    
+    
+    
+    
+    
+    
     private void OnEnable()
     {
         
