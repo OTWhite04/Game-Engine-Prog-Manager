@@ -48,8 +48,11 @@ public class InputManagerScript : MonoBehaviour, InputController.IGameplayAction
     //Method that plays a beep sound on the cube.
     public void OnSoundCube(InputAction.CallbackContext context)
     {
+        
+
         if(context.started)
         {
+            
             Debug.Log("Sound has Started!");
             SoundCubeEvent?.Invoke();
         }
