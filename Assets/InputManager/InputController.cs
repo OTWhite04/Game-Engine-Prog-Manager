@@ -232,7 +232,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
     public interface IGameplayActions
     {
         void OnJump(InputAction.CallbackContext context);
-        void OnSoundCube(InputAction.CallbackContext context);
+        void OnCubeColor(InputAction.CallbackContext context);
         void OnLight(InputAction.CallbackContext context);
     }
 }
